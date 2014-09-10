@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>HTML Code Review</title>
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+
+		<style>
+		  .reveal pre {
+  		  margin: 30px auto;
+		  }
+		</style>
+
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+
+			<div class="slides">
+
+
+        <!-- slide 1 (intro) -->
+				<section>
+
+					<h2>HTML Code Review</h2>
+					<p><small>Prepared by <a href="http://trevorsaint.com">Trevor Saint</a></small></p>
+
+				</section>
+				<!-- end-->
+
+
+				<!-- slide 2 (headings) -->
+				<section>
+
+            <!-- one -->
+  					<section>
+
+  					  <h2>Headings</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h2><strong>Heading goes here</strong></h2>
+</code></pre>
+
+    					<small><b>Strong</b> is already implied because the heading tag has semantic meaning.</small>
+    					<small><b>Strong</b> inside a heading tag may cause a red flag with major search engines.</small>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- two -->
+            <section>
+
+  					  <h2>Headings</h2>
+  					  <p>Good practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h2>Heading goes here</h2>
+</code></pre>
+
+<p>Or if you want the heading to be bold for example</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h2 class="bold-medium">Heading goes here</h2>
+</code></pre>
+
+<p><small>We essentially have a <b>typography partial</b> (SASS) which includes a whole list of formatting properties</small></p>
+
+            </section>
+            <!-- end -->
+
+            <!-- three -->
+            <section>
+
+  					  <h2>Headings</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h3>
+  <div>
+    <dt>Find land</dt>
+  </div>
+  <div>Parcel ID:</div>
+  <div>Parcel size:</div>
+</h3>
+</code></pre>
+
+              <p><small>Element <b>div</b> not allowed as child of element <b>h3</b> in this context</small></p>
+              <p><small>Element <b>dt</b> not allowed as child of element <b>h3</b> in this context</small></p>
+
+  					</section>
+  					<!-- end -->
+
+  					<!-- four -->
+  					<section>
+
+              <h2>Headings</h2>
+  					  <p>Good practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h3>Find land</h3>
+<ul>
+  <li>Parcel ID:</li>
+  <li>Parcel Size:</li>
+</ul>
+</code></pre>
+
+              <p>Or you could even use a <b>description list</b>&hellip;</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h3>Find land</h3>
+<dl>
+  <dt>Parcel ID:</dt>
+  <dd>Value</dd>
+  <dt>Parcel Size:</dt>
+  <dd>Value</dd>
+</dl>
+</code></pre>
+
+            <p><small><b>Description list</b> was previously known as a <b>Definition list</b> in HTML4</small></p>
+
+            </section>
+  					<!-- end -->
+
+				</section>
+				<!-- end -->
+
+
+				<!-- slide 3 (paragraphs) -->
+				<section>
+
+            <!-- one -->
+  					<section>
+
+  					  <h2>Paragraphs</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--p--><h3>1. Who do you want to give permissions to?</h3><!--/p-->
+</code></pre>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- two -->
+            <section>
+
+              <h2>Paragraphs</h2>
+  					  <p>Correct practice</p>
+
+<pre><code data-trim contenteditable>
+<p class="lede">1. Who do you want to give permissions to?</p>
+</code></pre>
+
+            <p><small>A <b>lead</b>, or <b>lede</b>, paragraph in literature is the opening paragraph.</small></p>
+
+            </section>
+            <!-- end -->
+
+            <!-- three -->
+            <section>
+
+  					  <h2>Paragraphs</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--p class="info"--><strong>You have merged parcels which are:</strong>
+  <ol>
+    <li>Some text was here and some <span> more text </span></li>
+  </ol>
+<!--/p-->
+</code></pre>
+
+            <p><small><b>Strong</b> is incorrectly used here. If you want <b>bold text</b> use the <b>b</b> tag for presentation.</small></p>
+            <p><small>Screen readers render the <b>strong</b> tag with a <strong>'LOUDER VOICE' - (200 instances).</strong></small></p>
+            <p><small><b>This is not valid</b>, and should not be formatted in this way.</small></p>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- four -->
+            <section>
+
+  					  <h2>Paragraphs</h2>
+  					  <p>Good practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<p class="lede">You have merged parcels which are:</p>
+<ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ol>
+</code></pre>
+
+            <p><small>If the results will never be <b>>1</b>, then a <b>UL</b> or <b>OL</b> should not really be used.</small></p>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- four -->
+  					<section>
+
+  					  <h2>Paragraphs</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--p-->
+  <span>{{errorMessage}}</span>
+  <input type="text" />
+  <button>Find person</button>
+  <p><span class="hint">Example, customer reference '1234567890'</span></p>
+<!--/p-->
+</code></pre>
+
+            <p><small>Nesting <b>P tags</b> inside of other <b>P tags</b> is invalid HTML.</small></p>
+            <p><small><b>Poor HTML</b> / <b>No meaningful structure</b></small></p>
+
+  					</section>
+  					<!-- end -->
+
+				</section>
+				<!-- end -->
+
+
+				<!-- slide 5 (inline styles) -->
+				<section>
+
+            <!-- one -->
+  					<section>
+
+  					  <h2>Inline Styles</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<h3 style="font-weight: normal">
+  <span ng-hide="isEdit">We suggest these permission levels for</span>
+  <span ng-show="isEdit">These are the permission levels for</span>
+  <strong>{{assignedPerson.firstName}} {{assignedPerson.lastName}}</strong>,
+  <br/>
+  <strong>{{role.name}}</strong> for <strong>{{organisation.name}}</strong>.
+</h3>
+</code></pre>
+
+            <p><small><b>Strong</b> is incorrectly used here.</small></p>
+
+            <p><small><b>Inline styles</b> have the highest precedence, which will cause issues long term</small></p>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- two -->
+  					<section>
+
+  					  <h2>Inline Styles</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--div style="clear: both" /-->
+</code></pre>
+
+            <p><small><b>Inline styles</b> have the highest precedence, which will cause issues long term</small></p>
+            <p><small>This is not how you close a <b>div</b> tag</small></p>
+
+  					</section>
+  					<!-- end -->
+
+				</section>
+				<!-- end -->
+
+
+				<!-- slide 6 (forms) -->
+				<section>
+
+            <!-- one -->
+  					<section>
+
+  					  <h2>Forms</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--form>
+  <form></form>
+</form-->
+</code></pre>
+
+            <p><small><b>Nested forms</b> are not allowed.</small></p>
+            <p><small><b>Check</b> your HTML fully to avoid errors like these.</small></p>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- two -->
+            <section>
+
+  					  <h2>Forms</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<legend>Add people to the business</legend>
+<form class="capd-form" action="/">
+  ... form content
+</form>
+</code></pre>
+
+            <p><small>A <b>legend tag</b> defines a caption for the <b>fieldset</b>.</small></p>
+            <p><small>Use <b>fieldset</b> and <b>legend</b> to group logically related form controls.</small></p>
+
+  					</section>
+  					<!-- end -->
+
+  					<!-- three -->
+            <section>
+
+  					  <h2>Forms</h2>
+  					  <p>Good practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<form method="post" action="/">
+  <fieldset>
+    <legend>Date of birth</legend>
+      <div class="form-group">
+        <label for="dob-day">Day</label>
+        <input type="text" id="dob-day">
+      </div>
+      <div class="form-group">
+        <label for="dob-month">Month</label>
+        <input type="text" id="dob-month">
+      </div>
+  </fieldset>
+</form>
+</code></pre>
+
+            <p><small>Clean. Accessible and Semantic HTML</small></p>
+            <small>Associates a label to a form control. <b>Good for accessibility</b>.</small>
+
+  					</section>
+  					<!-- end -->
+
+            <!-- four -->
+            <section>
+
+  					  <h2>Forms</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--input type="checkbox" ng-model="" id="">&nbsp;I agree</input-->
+</code></pre>
+
+            <p><small>An input is <b>self-closing</b> you can't wrap a closing <b>input tag</b> on it</small></p>
+            <p><small>This would <b>fail validation</b> and cause <b>accessibility problems</b>.</small></p>
+
+  					</section>
+  					<!-- end -->
+
+  					<!-- five -->
+            <section>
+
+  					  <h2>Forms</h2>
+  					  <p>Good practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<label>
+  <input type="checkbox" ng-model=""> I agree
+</label>
+</code></pre>
+
+            <p><small>Wrapping a <b>label</b> around an <b>input</b> is perfectly valid and has certain advantages.</small></p>
+
+  					</section>
+  					<!-- end -->
+
+  					<!-- six -->
+            <section>
+
+  					  <h2>Forms</h2>
+  					  <p>Bad practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<!--textarea name="note" name="note" ng-model="note" /-->
+</code></pre>
+
+            <p><small>Textareas work differently to standard inputs. You don't close them like this!</small></p>
+            <p><small>We also have a <b>duplication</b> of name attribute</small></p>
+
+  					</section>
+  					<!-- end -->
+
+  					<!-- seven -->
+            <section>
+
+  					  <h2>Forms</h2>
+  					  <p>Good practice</p>
+
+<pre><code data-trim contenteditable spellcheck="false">
+<div class="form-group">
+  <label for="note">Note</label>
+  <textarea id="note" name="note" cols="60" rows="10"></textarea>
+</div>
+</code></pre>
+
+<p><small>Label is associated with the form control</small></p>
+
+  					</section>
+  					<!-- end -->
+
+				</section>
+				<!-- end -->
+
+
+				<!-- slide 6 (other) -->
+				<section>
+
+          <!-- one -->
+  				<section id="fragments">
+
+						<h2>Other</h2>
+						<p>A few other important pointers&hellip;</p>
+
+						<ol>
+							<li class="fragment">Don't style by <b>ID</b></li>
+							<li class="fragment">Stop using <b>BR</b> tags (345)</li>
+							<li class="fragment">Stop using <b>strong</b> tags (200)</li>
+							<li class="fragment">Minimal <b>div</b> tags</li>
+							<li class="fragment">Always use <b>href=""</b></li>
+							<li class="fragment">Review your code</li>
+						</ol>
+
+					</section>
+					<!-- end -->
+
+          <!-- two -->
+					<section id="fragments">
+
+						<h2>Useful Links</h2>
+
+            <p><small><a href="http://html5doctor.com">http://html5doctor.com</a></small></p>
+            <p><small><a href="http://www.w3schools.com">http://www.w3schools.com</a></small></p>
+						<p><small><a href="http://line25.com/articles/youre-doing-it-wrong-common-html-tag-misuse">http://line25.com/articles/youre-doing-it-wrong-common-html-tag-misuse</a></small></p>
+
+					</section>
+          <!-- end -->
+
+				</section>
+				<!-- end -->
+
+
+				<!-- slide 6 (thanks) -->
+				<section>
+
+          <!-- one -->
+  				<section id="fragments">
+
+						<h2>Thanks for watching</h2>
+
+						<p><b>Skype:</b> trevor.saint.skype</p>
+						<p><b>Google:</b> google.com/+trevorsaint</p>
+						<p><b>Github:</b> github.com/trevorsaint</p>
+
+					</section>
+					<!-- end -->
+
+				</section>
+				<!-- end -->
+
+
+			</div>
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+    <!-- scripts -->
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+
+			});
+
+		</script>
+		<!-- end -->
+
+	</body>
+</html>
