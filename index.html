@@ -116,8 +116,8 @@
 </h3>
 </code></pre>
 
-              <p><small>Element <b>div</b> not allowed as child of element <b>h3</b> in this context</small></p>
-              <p><small>Element <b>dt</b> not allowed as child of element <b>h3</b> in this context</small></p>
+              <p><small>Element <b>&lt;div&gt;</b> not allowed as child of element <b>&lt;h3&gt;</b> in this context</small></p>
+              <p><small>Element <b>&lt;dt&gt;</b> not allowed as child of element <b>&lt;h3&gt;</b> in this context</small></p>
 
   					</section>
   					<!-- end -->
@@ -129,7 +129,7 @@
   					  <p>Good practice</p>
 
 <pre><code data-trim contenteditable spellcheck="false">
-<h3>Find land</h3>
+<h3 class="heading-medium">Find land</h3>
 <ul>
   <li>Parcel ID:</li>
   <li>Parcel Size:</li>
@@ -139,7 +139,7 @@
               <p>Or you could even use a <b>description list</b>&hellip;</p>
 
 <pre><code data-trim contenteditable spellcheck="false">
-<h3>Find land</h3>
+<h3 class="heading-medium">Find land</h3>
 <dl>
   <dt>Parcel ID:</dt>
   <dd>Value</dd>
@@ -170,6 +170,8 @@
 <!--p--><h3>1. Who do you want to give permissions to?</h3><!--/p-->
 </code></pre>
 
+            <p><small>I had to comment out the <b>&lt;p&gt;</b> tags because the syntax highlighter corrected the mistake automatically.</small></p>
+
   					</section>
   					<!-- end -->
 
@@ -180,10 +182,10 @@
   					  <p>Correct practice</p>
 
 <pre><code data-trim contenteditable>
-<p class="lede">1. Who do you want to give permissions to?</p>
+<h3 class="heading-medium">1. Who do you want to give permissions to?</h3>
 </code></pre>
 
-            <p><small>A <b>lead</b>, or <b>lede</b>, paragraph in literature is the opening paragraph.</small></p>
+            <p><small>A heading tag should most likely be used here.</small></p>
 
             </section>
             <!-- end -->
@@ -202,8 +204,9 @@
 <!--/p-->
 </code></pre>
 
-            <p><small><b>Strong</b> is incorrectly used here. If you want <b>bold text</b> use the <b>b</b> tag for presentation.</small></p>
-            <p><small>Screen readers render the <b>strong</b> tag with a <strong>'LOUDER VOICE' - (200 instances).</strong></small></p>
+            <p><small>I had to comment out the <b>&lt;p&gt;</b> tags because the syntax highlighter corrected the mistake automatically.</small></p>
+            <p><small><b>Strong</b> is incorrectly used here. If you want <b>bold text</b> use the <b>&lt;b&gt;</b> tag for presentation.</small></p>
+            <p><small>Screen readers render the <b>&lt;strong&gt;</b> tag with a <strong>'LOUDER VOICE' - (200 instances).</strong></small></p>
             <p><small><b>This is not valid</b>, and should not be formatted in this way.</small></p>
 
   					</section>
@@ -216,7 +219,7 @@
   					  <p>Good practice</p>
 
 <pre><code data-trim contenteditable spellcheck="false">
-<p class="lede">You have merged parcels which are:</p>
+<h3 class="heading-medium">You have merged parcels which are:</h3>
 <ol>
     <li>Item 1</li>
     <li>Item 2</li>
@@ -244,6 +247,7 @@
 <!--/p-->
 </code></pre>
 
+            <p><small>I had to comment out the <b>&lt;p&gt;</b> tags because the syntax highlighter corrected the mistake automatically.</small></p>
             <p><small>Nesting <b>P tags</b> inside of other <b>P tags</b> is invalid HTML.</small></p>
             <p><small><b>Poor HTML</b> / <b>No meaningful structure</b></small></p>
 
@@ -290,6 +294,7 @@
 <!--div style="clear: both" /-->
 </code></pre>
 
+            <p><small>I had to comment out the <b>&lt;div&gt;</b> tag because the syntax highlighter corrected the mistake automatically.</small></p>
             <p><small><b>Inline styles</b> have the highest precedence, which will cause issues long term</small></p>
             <p><small>This is not how you close a <b>div</b> tag</small></p>
 
@@ -315,6 +320,7 @@
 </form-->
 </code></pre>
 
+            <p><small>I had to comment out the <b>&lt;form&gt;</b> tags because the syntax highlighter corrected the mistake automatically.</small></p>
             <p><small><b>Nested forms</b> are not allowed.</small></p>
             <p><small><b>Check</b> your HTML fully to avoid errors like these.</small></p>
 
@@ -334,8 +340,8 @@
 </form>
 </code></pre>
 
-            <p><small>A <b>legend tag</b> defines a caption for the <b>fieldset</b>.</small></p>
-            <p><small>Use <b>fieldset</b> and <b>legend</b> to group logically related form controls.</small></p>
+            <p><small>A <b>&lt;legend&gt;</b> tag defines a caption for the <b>&lt;fieldset&gt;</b>.</small></p>
+            <p><small>Use <b>&lt;fieldset&gt;</b> and <b>&lt;legend&gt;</b> to group logically related form controls.</small></p>
 
   					</section>
   					<!-- end -->
@@ -362,7 +368,7 @@
 </form>
 </code></pre>
 
-            <p><small>Clean. Accessible and Semantic HTML</small></p>
+            <p><small>Clean. Accessible and Semantic <abbr title="HyperText Markup Language">HTML</abbr></small></p>
             <small>Associates a label to a form control. <b>Good for accessibility</b>.</small>
 
   					</section>
@@ -378,6 +384,7 @@
 <!--input type="checkbox" ng-model="" id="">&nbsp;I agree</input-->
 </code></pre>
 
+            <p><small>I had to comment out the <b>&lt;input&gt;</b> tag because the syntax highlighter corrected the mistake automatically.</small></p>
             <p><small>An input is <b>self-closing</b> you can't wrap a closing <b>input tag</b> on it</small></p>
             <p><small>This would <b>fail validation</b> and cause <b>accessibility problems</b>.</small></p>
 
@@ -396,7 +403,7 @@
 </label>
 </code></pre>
 
-            <p><small>Wrapping a <b>label</b> around an <b>input</b> is perfectly valid and has certain advantages.</small></p>
+            <p><small>Wrapping a <b>&lt;label&gt;</b> around an <b>&lt;input&gt;</b> is perfectly valid and has certain advantages.</small></p>
 
   					</section>
   					<!-- end -->
@@ -411,6 +418,7 @@
 <!--textarea name="note" name="note" ng-model="note" /-->
 </code></pre>
 
+            <p><small>I had to comment out the <b>&lt;textarea&gt;</b> tag because the syntax highlighter corrected the mistake automatically.</small></p>
             <p><small>Textareas work differently to standard inputs. You don't close them like this!</small></p>
             <p><small>We also have a <b>duplication</b> of name attribute</small></p>
 
@@ -430,7 +438,7 @@
 </div>
 </code></pre>
 
-<p><small>Label is associated with the form control</small></p>
+<p><small>The <b>&lt;label&gt;</b> is associated with the form control</small></p>
 
   					</section>
   					<!-- end -->
@@ -450,9 +458,9 @@
 
 						<ol>
 							<li class="fragment">Don't style by <b>ID</b></li>
-							<li class="fragment">Stop using <b>BR</b> tags (345)</li>
-							<li class="fragment">Stop using <b>strong</b> tags (200)</li>
-							<li class="fragment">Minimal <b>div</b> tags</li>
+							<li class="fragment">Stop using <b>&lt;br&gt;</b> tags (345)</li>
+							<li class="fragment">Stop using <b>&lt;strong&gt;</b> tags (200)</li>
+							<li class="fragment">Minimal <b>&lt;div&gt;</b> tags</li>
 							<li class="fragment">Always use <b>href=""</b></li>
 							<li class="fragment">Review your code</li>
 						</ol>
